@@ -14,7 +14,7 @@ async function summarizeThread(req, res) {
     const threadInfo = await webClient.conversations.replies({ channel: body.channel.id, ts: threadId });
 	const msg = threadInfo.messages.map((message) => message.text).join('\n');
 
-	const summary = getChatResponse({thread: msg, threadPrompt: 'Summarise the following conversation:'});
+	const summary = await getChatResponse({thread: msg, threadPrompt: 'Summarise the following conversation:'});
 
 	axios.post(body.response_url, {
 		text: summary,

@@ -1,6 +1,7 @@
 
 // const OPENAI_CHAT_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const OPENAI_CHAT_ENDPOINT = 'https://merlin-hackathon-yak3s7dv3a-ue.a.run.app/api/v1/normal';
+const axios = require('axios');
 
 /**
  * @param {string} threadPrompt
@@ -27,13 +28,15 @@ const getChatResponse = async ({threadPrompt, thread, wordLimit}) => {
 	}
 	try {
 		const response = await axios.post(OPENAI_CHAT_ENDPOINT, data);
+		console.error('response-->', response);
+
 		return response.data.data.content;
 	} catch (error) {
-		console.error(error);
+		console.error('ERRROR-->', error);
 	}
 }
 
-module.exports = getChatResponse;
+module.exports = { getChatResponse };
 
 // }
 
