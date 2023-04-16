@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
-const { summarizeThread } = require('./slack');
+const { summarizeThread, askQuestion } = require('./slack');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({limit : "160mb", parameterLimit: 10000}));
@@ -12,6 +12,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/summarize-thread', summarizeThread);
+
+app.post('/ask-question', askQuestion)
+
 app.post('/slack/event', (req, res) => {
 	console.log('event received', req.body);
 	res.json({ challenge: req.body.challenge })

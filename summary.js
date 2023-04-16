@@ -9,7 +9,7 @@ const axios = require('axios');
  * @param {number} wordLimit
  * @returns {Promise<string>}
  */
-const getChatResponse = async ({threadPrompt, thread, wordLimit}) => {
+	const getChatResponse = async ({threadPrompt, thread, wordLimit}) => {
 
 	const data = {
 		"config": {
@@ -28,7 +28,7 @@ const getChatResponse = async ({threadPrompt, thread, wordLimit}) => {
 	}
 	try {
 		const response = await axios.post(OPENAI_CHAT_ENDPOINT, data);
-		console.error('response-->', response);
+		console.error('response-->', response.data);
 
 		return response.data.data.content;
 	} catch (error) {
