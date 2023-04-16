@@ -49,7 +49,7 @@ async function summarizeThread(req, res) {
 			thread_ts: threadId,
 		})
 		.then((response) => response.data)
-		.then((data) => console.log(data))
+		.then((data) => console.log('DATA--->', data))
 		.then(() => {
 			res.json({
 				trigger_id: body.trigger_id,
