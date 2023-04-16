@@ -10,7 +10,7 @@ const webClient = new WebClient(SLACK_BOT_TOKEN);
 async function summarizeThread(req, res) {
 	const body = JSON.parse(req.body.payload);
 	const threadId = body.message.thread_ts || body.message.ts;
-	console.log(body.message?.files);
+	// console.log(body.message?.files);
     const threadInfo = await webClient.conversations.replies({ channel: body.channel.id, ts: threadId });
 	const msg = threadInfo.messages.map((message) => message.text).join('\n');
 
@@ -23,7 +23,7 @@ async function summarizeThread(req, res) {
 		thread_ts: threadId,
 	})
 		.then((response) => response.data)
-		.then((data) => console.log(data))
+		.then((data) => console.log('DATA--->', data))
 		.then(() => {
 			res.json({ 
 				trigger_id: body.trigger_id,
