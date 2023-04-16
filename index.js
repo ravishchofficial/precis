@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.post('/summarize-thread', summarizeThread);
 
-app.post('/summarize-asset', summarizeAsset);
+app.post('/summarize', summarizeAsset);
 
 app.post('/slack/event', (req, res) => {
 	console.log('event received', req.body);
